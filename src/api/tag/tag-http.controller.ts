@@ -104,7 +104,7 @@ export class TagHttpController extends HttpController {
 		};
 	}
 
-	async validateUpdateContent(options) : Promise<any> {
+	async validatecontentUpdate(options) : Promise<any> {
 		if (!utilsCheckStrId(options['id'])) {
 			throw new MethodNotAllowedException(`Property "id" is nt valid.`);
 		}
@@ -175,12 +175,12 @@ export class TagHttpController extends HttpController {
 	}
 
 	@Patch(':id/option')
-	async updateContent(
+	async contentUpdate(
 		@AccessToken() accessToken: string,
 		@Param('id') id: string,
 		@Body('content') content: string,
 	) {
-		return await this.serviceHandlerWrapper(async () => await this.serviceOptionContent.update(await this.validateUpdateContent({
+		return await this.serviceHandlerWrapper(async () => await this.serviceOptionContent.update(await this.validatecontentUpdate({
 			accessToken,
 			id,
 			content,

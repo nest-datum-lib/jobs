@@ -49,8 +49,8 @@ export class TagOptionTcpController extends OptionTcpController {
 		return await super.content(payload);
 	}
 
-	@EventPattern('tag.updateContent')
-	async updateContent(payload) {
-		return await super.updateContent(payload);
+	@EventPattern('tag.contentUpdate')
+	async contentUpdate(payload) {
+		return await super.contentUpdate(payload);
 	}
 }

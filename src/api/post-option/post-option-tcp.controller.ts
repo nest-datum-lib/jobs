@@ -49,8 +49,8 @@ export class PostOptionTcpController extends OptionTcpController {
 		return await super.content(payload);
 	}
 
-	@EventPattern('post.updateContent')
-	async updateContent(payload) {
-		return await super.updateContent(payload);
+	@EventPattern('post.contentUpdate')
+	async contentUpdate(payload) {
+		return await super.contentUpdate(payload);
 	}
 }

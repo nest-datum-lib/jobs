@@ -49,8 +49,8 @@ export class CategoryOptionTcpController extends OptionTcpController {
 		return await super.content(payload);
 	}
 
-	@EventPattern('category.updateContent')
-	async updateContent(payload) {
-		return await super.updateContent(payload);
+	@EventPattern('category.contentUpdate')
+	async contentUpdate(payload) {
+		return await super.contentUpdate(payload);
 	}
 }
