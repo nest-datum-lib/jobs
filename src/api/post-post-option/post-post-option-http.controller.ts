@@ -4,6 +4,9 @@ import { PostPostOptionService } from './post-post-option.service';
 
 @Controller(`${process.env.SERVICE_JOBS}/post/option`)
 export class PostPostOptionHttpController extends BindHttpController {
+	protected readonly mainRelationColumnName: string = 'postId';
+	protected readonly optionRelationColumnName: string = 'postOptionId';
+
 	constructor(
 		protected service: PostPostOptionService,
 	) {

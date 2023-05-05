@@ -4,6 +4,9 @@ import { CategoryCategoryOptionService } from './category-category-option.servic
 
 @Controller(`${process.env.SERVICE_JOBS}/category/option`)
 export class CategoryCategoryOptionHttpController extends BindHttpController {
+	protected readonly mainRelationColumnName: string = 'categoryId';
+	protected readonly optionRelationColumnName: string = 'categoryOptionId';
+
 	constructor(
 		protected service: CategoryCategoryOptionService,
 	) {

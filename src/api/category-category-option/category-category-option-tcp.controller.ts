@@ -8,6 +8,9 @@ import { CategoryCategoryOptionService } from './category-category-option.servic
 
 @Controller()
 export class CategoryCategoryOptionTcpController extends BindTcpController {
+	protected readonly mainRelationColumnName: string = 'categoryId';
+	protected readonly optionRelationColumnName: string = 'categoryOptionId';
+
 	constructor(
 		protected service: CategoryCategoryOptionService,
 	) {

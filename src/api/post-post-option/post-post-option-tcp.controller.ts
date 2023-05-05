@@ -8,6 +8,9 @@ import { PostPostOptionService } from './post-post-option.service';
 
 @Controller()
 export class PostPostOptionTcpController extends BindTcpController {
+	protected readonly mainRelationColumnName: string = 'postId';
+	protected readonly optionRelationColumnName: string = 'postOptionId';
+
 	constructor(
 		protected service: PostPostOptionService,
 	) {
