@@ -21,13 +21,19 @@ export class TagTagOption {
 	@Column()
 	public tagOptionId: string;
 
-	@ManyToOne(() => TagOption, (tagOption) => tagOption.tagTagOptions)
+	@ManyToOne(() => TagOption, (tagOption) => tagOption.tagTagOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public tagOption: TagOption;
 
 	@Column()
 	public tagId: string;
 
-	@ManyToOne(() => Tag, (tag) => tag.tagTagOptions)
+	@ManyToOne(() => Tag, (tag) => tag.tagTagOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public tag: Tag;
 
 	@Column('text')

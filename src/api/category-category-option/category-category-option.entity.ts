@@ -14,15 +14,23 @@ export class CategoryCategoryOption extends Bind {
 	@Column()
 	public categoryOptionId: string;
 
-	@ManyToOne(() => CategoryOption, (categoryOption) => categoryOption.categoryCategoryOptions)
+	@ManyToOne(() => CategoryOption, (categoryOption) => categoryOption.categoryCategoryOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public categoryOption: CategoryOption;
 
 	@Column()
 	public categoryId: string;
 
-	@ManyToOne(() => Category, (category) => category.categoryCategoryOptions)
+	@ManyToOne(() => Category, (category) => category.categoryCategoryOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public category: Category;
 
-	@OneToMany(() => CategoryCategoryCategoryOption, (categoryCategoryCategoryOption) => categoryCategoryCategoryOption.categoryCategoryOption)
+	@OneToMany(() => CategoryCategoryCategoryOption, (categoryCategoryCategoryOption) => categoryCategoryCategoryOption.categoryCategoryOption, {
+		cascade: true,
+	})
 	public categoryCategoryCategoryOptions: CategoryCategoryCategoryOption[];
 }

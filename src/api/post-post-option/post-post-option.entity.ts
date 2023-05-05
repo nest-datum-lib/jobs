@@ -14,15 +14,23 @@ export class PostPostOption extends Bind {
 	@Column()
 	public postOptionId: string;
 
-	@ManyToOne(() => PostOption, (postOption) => postOption.postPostOptions)
+	@ManyToOne(() => PostOption, (postOption) => postOption.postPostOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public postOption: PostOption;
 
 	@Column()
 	public postId: string;
 
-	@ManyToOne(() => Post, (post) => post.postPostOptions)
+	@ManyToOne(() => Post, (post) => post.postPostOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public post: Post;
 
-	@OneToMany(() => PostPostPostOption, (postPostPostOption) => postPostPostOption.postPostOption)
+	@OneToMany(() => PostPostPostOption, (postPostPostOption) => postPostPostOption.postPostOption, {
+		cascade: true,
+	})
 	public postPostPostOptions: PostPostPostOption[];
 }

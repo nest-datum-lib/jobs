@@ -30,7 +30,10 @@ export class Post {
 	@Column({ default: '' })
 	public categoryId: string;
 
-	@ManyToOne(() => Category, (category) => category.posts)
+	@ManyToOne(() => Category, (category) => category.posts, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public category: Category;
 
 	@Column({ default: '' })
@@ -65,9 +68,13 @@ export class Post {
 	})
 	public updatedAt: Date;
 
-	@OneToMany(() => PostPostOption, (postPostOption) => postPostOption.post)
+	@OneToMany(() => PostPostOption, (postPostOption) => postPostOption.post, {
+		cascade: true,
+	})
 	public postPostOptions: PostPostOption[];
 
-	@OneToMany(() => PostPostPostOption, (postPostPostOption) => postPostPostOption.post)
+	@OneToMany(() => PostPostPostOption, (postPostPostOption) => postPostPostOption.post, {
+		cascade: true,
+	})
 	public postPostPostOptions: PostPostPostOption[];
 }

@@ -7,6 +7,8 @@ import { CategoryCategoryOption } from '../category-category-option/category-cat
 
 @Entity()
 export class CategoryOption extends Option {
-	@OneToMany(() => CategoryCategoryOption, (categoryCategoryOption) => categoryCategoryOption.categoryOption)
+	@OneToMany(() => CategoryCategoryOption, (categoryCategoryOption) => categoryCategoryOption.categoryOption, {
+		cascade: true,
+	})
 	public categoryCategoryOptions: CategoryCategoryOption[];
 }

@@ -13,13 +13,17 @@ export class CategoryCategoryCategoryOption extends Many {
 	public categoryCategoryOptionId: string;
 
 	@ManyToOne(() => CategoryCategoryOption, (categoryCategoryOption) => categoryCategoryOption.categoryCategoryCategoryOptions, {
-		onDelete: 'CASCADE'
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
 	})
 	public categoryCategoryOption: CategoryCategoryOption;
 
 	@Column()
 	public categoryId: string;
 
-	@ManyToOne(() => Category, (category) => category.categoryCategoryCategoryOptions)
+	@ManyToOne(() => Category, (category) => category.categoryCategoryCategoryOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public category: Category;
 }

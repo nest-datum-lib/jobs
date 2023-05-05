@@ -7,6 +7,8 @@ import { PostPostOption } from '../post-post-option/post-post-option.entity';
 
 @Entity()
 export class PostOption extends Option {
-	@OneToMany(() => PostPostOption, (postPostOption) => postPostOption.postOption)
+	@OneToMany(() => PostPostOption, (postPostOption) => postPostOption.postOption, {
+		cascade: true,
+	})
 	public postPostOptions: PostPostOption[];
 }

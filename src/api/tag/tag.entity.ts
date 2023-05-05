@@ -54,6 +54,8 @@ export class Tag {
 	})
 	public updatedAt: Date;
 
-	@OneToMany(() => TagTagOption, (tagTagOption) => tagTagOption.tag)
+	@OneToMany(() => TagTagOption, (tagTagOption) => tagTagOption.tag, {
+		cascade: true,
+	})
 	public tagTagOptions: TagTagOption[];
 }

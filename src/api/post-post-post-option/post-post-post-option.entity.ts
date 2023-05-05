@@ -13,13 +13,17 @@ export class PostPostPostOption extends Many {
 	public postPostOptionId: string;
 
 	@ManyToOne(() => PostPostOption, (postPostOption) => postPostOption.postPostPostOptions, {
-		onDelete: 'CASCADE'
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
 	})
 	public postPostOption: PostPostOption;
 
 	@Column()
 	public postId: string;
 
-	@ManyToOne(() => Post, (post) => post.postPostPostOptions)
+	@ManyToOne(() => Post, (post) => post.postPostPostOptions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	public post: Post;
 }

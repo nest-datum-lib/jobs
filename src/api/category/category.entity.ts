@@ -59,12 +59,18 @@ export class Category {
 	})
 	public updatedAt: Date;
 
-	@OneToMany(() => CategoryCategoryOption, (categoryCategoryOption) => categoryCategoryOption.category)
+	@OneToMany(() => CategoryCategoryOption, (categoryCategoryOption) => categoryCategoryOption.category, {
+		cascade: true,
+	})
 	public categoryCategoryOptions: CategoryCategoryOption[];
 
-	@OneToMany(() => CategoryCategoryCategoryOption, (categoryCategoryCategoryOption) => categoryCategoryCategoryOption.category)
+	@OneToMany(() => CategoryCategoryCategoryOption, (categoryCategoryCategoryOption) => categoryCategoryCategoryOption.category, {
+		cascade: true,
+	})
 	public categoryCategoryCategoryOptions: CategoryCategoryCategoryOption[];
 
-	@OneToMany(() => Post, (post) => post.category)
+	@OneToMany(() => Post, (post) => post.category, {
+		cascade: true,
+	})
 	public posts: Post[];
 }
