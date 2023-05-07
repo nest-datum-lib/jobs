@@ -72,7 +72,7 @@ import {
 	CategoryHttpModule,
 	CategoryHttpTcpModule,
 	CategoryTcpModule, 
-} from './api/Category';
+} from './api/category';
 
 const Http = {
 	AccessAccessOptionHttpModule,
