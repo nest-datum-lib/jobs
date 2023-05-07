@@ -35,14 +35,23 @@ export class Post {
 	public category: Category;
 
 	@Column({ default: '' })
-	public parentId: string;
-
-	@Column({ default: '' })
 	public postStatusId: string;
 
 	@Column()
 	@Index({ unique: true })
 	public name: string;
+
+	@Column()
+	@Index({ default: '' })
+	public companyId: string;
+
+	@Column()
+	@Index({ default: '' })
+	public locationId: string;
+
+	@Column()
+	@Index({ default: 0 })
+	public salary: number;
 
 	@Column({ default: '' })
 	@Index()

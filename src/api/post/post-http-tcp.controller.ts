@@ -16,6 +16,7 @@ import {
 	strId as utilsCheckStrId,
 	strName as utilsCheckStrName, 
 	strDescription as utilsCheckStrDescription,
+	numeric as utilsCheckNumeric,
 } from '@nest-datum-utils/check';
 
 @Controller(`${process.env.SERVICE_JOBS}/post`)
@@ -42,6 +43,15 @@ export class PostHttpTcpController extends MainHttpTcpController {
 		if (!utilsCheckStrId(options['categoryId'])) {
 			throw new MethodNotAllowedException(`Property "categoryId" is not valid.`);
 		}
+		if (!utilsCheckStrId(options['companyId'])) {
+			throw new MethodNotAllowedException(`Property "companyId" is not valid.`);
+		}
+		if (!utilsCheckStrId(options['locationId'])) {
+			throw new MethodNotAllowedException(`Property "locationId" is not valid.`);
+		}
+		if (!utilsCheckNumeric(options['salary'])) {
+			throw new MethodNotAllowedException(`Property "salary" is not valid.`);
+		}
 		return await super.validateCreate(options);
 	}
 
@@ -60,17 +70,23 @@ export class PostHttpTcpController extends MainHttpTcpController {
 			}
 			output['categoryId'] = options['categoryId'];
 		}
-		if (utilsCheckExists(options['parentId'])) {
-			if (!utilsCheckStrId(options['parentId'])) {
-				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
+		if (utilsCheckExists(options['companyId'])) {
+			if (!utilsCheckStrId(options['companyId'])) {
+				throw new MethodNotAllowedException(`Property "companyId" is not valid.`);
 			}
-			output['parentId'] = options['parentId'];
+			output['companyId'] = options['companyId'];
 		}
-		if (utilsCheckExists(options['parentId'])) {
-			if (!utilsCheckStrId(options['parentId'])) {
-				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
+		if (utilsCheckExists(options['locationId'])) {
+			if (!utilsCheckStrId(options['locationId'])) {
+				throw new MethodNotAllowedException(`Property "locationId" is not valid.`);
 			}
-			output['parentId'] = options['parentId'];
+			output['locationId'] = options['locationId'];
+		}
+		if (utilsCheckExists(options['salary'])) {
+			if (!utilsCheckNumeric(options['salary'])) {
+				throw new MethodNotAllowedException(`Property "salary" is not valid.`);
+			}
+			output['salary'] = options['salary'];
 		}
 		if (utilsCheckExists(options['name'])) {
 			if (!utilsCheckStrName(options['name'])) {
@@ -96,8 +112,10 @@ export class PostHttpTcpController extends MainHttpTcpController {
 		@Body('id') id: string,
 		@Body('userId') userId: string,
 		@Body('categoryId') categoryId: string,
-		@Body('parentId') parentId: string,
 		@Body('postStatusId') postStatusId: string,
+		@Body('companyId') companyId: string,
+		@Body('locationId') locationId: string,
+		@Body('salary') salary: number,
 		@Body('name') name: string,
 		@Body('description') description: string,
 		@Body('isNotDelete') isNotDelete: boolean,
@@ -111,8 +129,10 @@ export class PostHttpTcpController extends MainHttpTcpController {
 			id,
 			userId,
 			categoryId,
-			parentId,
 			postStatusId,
+			companyId,
+			locationId,
+			salary,
 			name,
 			description,
 			isNotDelete,
@@ -126,8 +146,10 @@ export class PostHttpTcpController extends MainHttpTcpController {
 		@Body('id') newId: string,
 		@Body('userId') userId: string,
 		@Body('categoryId') categoryId: string,
-		@Body('parentId') parentId: string,
 		@Body('postStatusId') postStatusId: string,
+		@Body('companyId') companyId: string,
+		@Body('locationId') locationId: string,
+		@Body('salary') salary: number,
 		@Body('name') name: string,
 		@Body('description') description: string,
 		@Body('isNotDelete') isNotDelete: boolean,
@@ -143,8 +165,10 @@ export class PostHttpTcpController extends MainHttpTcpController {
 			newId,
 			userId,
 			categoryId,
-			parentId,
 			postStatusId,
+			companyId,
+			locationId,
+			salary,
 			name,
 			description,
 			isNotDelete,

@@ -10,6 +10,7 @@ import {
 	strId as utilsCheckStrId,
 	strName as utilsCheckStrName, 
 	strDescription as utilsCheckStrDescription,
+	numeric as utilsCheckNumeric,
 } from '@nest-datum-utils/check';
 import { PostService } from './post.service';
 
@@ -31,6 +32,15 @@ export class PostTcpController extends TcpController {
 		if (!utilsCheckStrId(options['categoryId'])) {
 			throw new MethodNotAllowedException(`Property "categoryId" is not valid.`);
 		}
+		if (!utilsCheckStrId(options['companyId'])) {
+			throw new MethodNotAllowedException(`Property "companyId" is not valid.`);
+		}
+		if (!utilsCheckStrId(options['locationId'])) {
+			throw new MethodNotAllowedException(`Property "locationId" is not valid.`);
+		}
+		if (!utilsCheckNumeric(options['salary'])) {
+			throw new MethodNotAllowedException(`Property "salary" is not valid.`);
+		}
 		return await super.validateCreate(options);
 	}
 
@@ -49,17 +59,23 @@ export class PostTcpController extends TcpController {
 			}
 			output['categoryId'] = options['categoryId'];
 		}
-		if (utilsCheckExists(options['parentId'])) {
-			if (!utilsCheckStrId(options['parentId'])) {
-				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
+		if (utilsCheckExists(options['companyId'])) {
+			if (!utilsCheckStrId(options['companyId'])) {
+				throw new MethodNotAllowedException(`Property "companyId" is not valid.`);
 			}
-			output['parentId'] = options['parentId'];
+			output['companyId'] = options['companyId'];
 		}
-		if (utilsCheckExists(options['parentId'])) {
-			if (!utilsCheckStrId(options['parentId'])) {
-				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
+		if (utilsCheckExists(options['locationId'])) {
+			if (!utilsCheckStrId(options['locationId'])) {
+				throw new MethodNotAllowedException(`Property "locationId" is not valid.`);
 			}
-			output['parentId'] = options['parentId'];
+			output['locationId'] = options['locationId'];
+		}
+		if (utilsCheckExists(options['salary'])) {
+			if (!utilsCheckNumeric(options['salary'])) {
+				throw new MethodNotAllowedException(`Property "salary" is not valid.`);
+			}
+			output['salary'] = options['salary'];
 		}
 		if (utilsCheckExists(options['name'])) {
 			if (!utilsCheckStrName(options['name'])) {

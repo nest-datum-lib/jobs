@@ -32,8 +32,10 @@ export class PostService extends MainService {
 			...super.manyGetColumns(customColumns),
 			userId: true,
 			categoryId: true,
-			parentId: true,
 			postStatusId: true,
+			companyId: true,
+			locationId: true,
+			salary: true,
 			name: true,
 			description: true,
 		});
@@ -44,8 +46,10 @@ export class PostService extends MainService {
 			...super.oneGetColumns(customColumns),
 			userId: true,
 			categoryId: true,
-			parentId: true,
 			postStatusId: true,
+			companyId: true,
+			locationId: true,
+			salary: true,
 			name: true,
 			description: true,
 		});
@@ -55,6 +59,7 @@ export class PostService extends MainService {
 		return ({
 			name: true,
 			description: true,
+			salary: true,
 		});
 	}
 }
