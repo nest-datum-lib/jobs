@@ -10,7 +10,7 @@ import { PostPostOption } from '../post-post-option/post-post-option.entity';
 import { Post } from './post.entity';
 
 @Injectable()
-export class postService extends MainService {
+export class PostService extends MainService {
 	protected readonly withEnvKey: boolean = false;
 	protected readonly withTwoStepRemoval: boolean = true;
 	protected readonly repositoryConstructor = Post;
