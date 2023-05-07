@@ -16,8 +16,6 @@ export class CategoryStatusTcpController extends StatusTcpController {
 
 	@MessagePattern({ cmd: 'categoryStatus.many' })
 	async many(payload) {
-		console.log('JOBS', payload);
-		
 		return await super.many(payload);
 	}
 
