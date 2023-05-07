@@ -22,6 +22,8 @@ export class TagHttpTcpController extends MainHttpTcpController {
 	protected readonly serviceName: string = process.env.SERVICE_JOBS;
 	protected readonly entityName: string = 'tag';
 	protected readonly entityManyName: string = 'tagOptionRelation';
+	protected readonly mainRelationColumnName: string = 'tagId';
+	protected readonly optionRelationColumnName: string = 'tagOptionId';
 
 	constructor(
 		protected transport: TransportService,

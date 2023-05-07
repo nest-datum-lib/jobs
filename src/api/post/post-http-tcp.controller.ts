@@ -22,6 +22,8 @@ export class PostHttpTcpController extends MainHttpTcpController {
 	protected readonly serviceName: string = process.env.SERVICE_JOBS;
 	protected readonly entityName: string = 'post';
 	protected readonly entityManyName: string = 'postOptionRelation';
+	protected readonly mainRelationColumnName: string = 'postId';
+	protected readonly optionRelationColumnName: string = 'postOptionId';
 
 	constructor(
 		protected transport: TransportService,
