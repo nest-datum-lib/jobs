@@ -15,6 +15,7 @@ import { PostPostPostOption } from '../post-post-post-option/post-post-post-opti
 import { PostPostOption } from '../post-post-option/post-post-option.entity';
 import { PostContent } from '../post-content/post-content.entity';
 import { Category } from '../category/category.entity';
+import { Company } from '../company/company.entity';
 
 @Entity()
 export class Post {
@@ -35,6 +36,18 @@ export class Post {
 	public category: Category;
 
 	@Column({ default: '' })
+	public companyId: string;
+
+	@ManyToOne(() => Company, (company) => company.posts, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
+	public company: Company;
+
+	@Column({ default: '' })
+	public locationId: string;
+
+	@Column({ default: '' })
 	public postStatusId: string;
 
 	@Column()
@@ -42,17 +55,11 @@ export class Post {
 	public name: string;
 
 	@Column({ default: '' })
-	public companyId: string;
-
-	@Column({ default: '' })
-	public locationId: string;
+	@Index()
+	public description: string;
 
 	@Column({ default: 0 })
 	public salary: number;
-
-	@Column({ default: '' })
-	@Index()
-	public description: string;
 
 	@Column('boolean', { default: false })
 	public isDeleted: boolean = false;
