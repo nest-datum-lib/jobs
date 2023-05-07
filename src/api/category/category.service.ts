@@ -31,7 +31,6 @@ export class CategoryService extends MainService {
 		return ({
 			...super.manyGetColumns(customColumns),
 			userId: true,
-			parentId: true,
 			categoryStatusId: true,
 			name: true,
 			description: true,
@@ -42,7 +41,6 @@ export class CategoryService extends MainService {
 		return ({
 			...super.oneGetColumns(customColumns),
 			userId: true,
-			parentId: true,
 			categoryStatusId: true,
 			name: true,
 			description: true,

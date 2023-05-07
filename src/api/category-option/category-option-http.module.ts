@@ -13,12 +13,14 @@ import { CategoryOptionHttpController } from './category-option-http.controller'
 import { CategoryCategoryCategoryOption } from '../category-category-category-option/category-category-category-option.entity';
 import { CategoryCategoryOption } from '../category-category-option/category-category-option.entity';
 import { Category } from '../category/category.entity';
+import { PostContent } from '../post-content/post-content.entity';
 import { CategoryOption } from './category-option.entity';
 
 @Module({
 	controllers: [ CategoryOptionHttpController ],
 	imports: [
 		TypeOrmModule.forFeature([ 
+			PostContent,
 			CategoryOption,
 			CategoryCategoryOption,
 			Category,

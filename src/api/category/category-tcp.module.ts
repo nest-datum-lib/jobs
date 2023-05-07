@@ -10,6 +10,7 @@ import {
 } from '@nest-datum/cache';
 import { CategoryService } from './category.service';
 import { CategoryTcpController } from './category-tcp.controller';
+import { Post } from '../post/post.entity';
 import { CategoryCategoryCategoryOption } from '../category-category-category-option/category-category-category-option.entity';
 import { CategoryOption } from '../category-option/category-option.entity';
 import { CategoryCategoryOption } from '../category-category-option/category-category-option.entity';
@@ -19,6 +20,7 @@ import { Category } from './category.entity';
 	controllers: [ CategoryTcpController ],
 	imports: [
 		TypeOrmModule.forFeature([ 
+			Post,
 			CategoryOption,
 			CategoryCategoryOption,
 			Category,

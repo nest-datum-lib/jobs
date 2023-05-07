@@ -1,46 +1,45 @@
 import { 
+	PrimaryGeneratedColumn,
 	Entity, 
 	Column,
-	PrimaryGeneratedColumn,
 	CreateDateColumn,
 	UpdateDateColumn,
 	ManyToOne,
 	OneToMany,
 } from 'typeorm';
-import { TagOption } from '../tag-option/tag-option.entity';
-import { Tag } from '../tag/tag.entity';
+import { Post } from '../post/post.entity';
+import { CategoryOption } from '../category-option/category-option.entity';
 
 @Entity()
-export class TagTagOption {
+export class PostContent {
 	@PrimaryGeneratedColumn('uuid')
 	public id: string;
 
 	@Column({ default: '' })
-	public parentId: string;
+	public userId: string;
 
-	@Column()
-	public tagOptionId: string;
+	@Column({ default: '' })
+	public postId: string;
 
-	@ManyToOne(() => TagOption, (tagOption) => tagOption.tagTagOptions, {
+	@ManyToOne(() => Post, (post) => post.postContents, {
 		onDelete: 'CASCADE',
 		onUpdate: 'CASCADE',
 	})
-	public tagOption: TagOption;
+	public post: Post;
 
-	@Column()
-	public tagId: string;
+	@Column({ default: '' })
+	public categoryOptionId: string;
 
-	@ManyToOne(() => Tag, (tag) => tag.tagTagOptions, {
+	@ManyToOne(() => CategoryOption, (categoryOption) => categoryOption.postContents, {
 		onDelete: 'CASCADE',
 		onUpdate: 'CASCADE',
 	})
-	public tag: Tag;
+	public categoryOption: CategoryOption;
 
-	@Column('text')
-	public content: string;
-
-	@Column('boolean', { default: false })
-	public isDeleted: boolean = false;
+	@Column('text', {
+		nullable: true,
+	})
+	public value: string;
 
 	@CreateDateColumn({ 
 		type: 'timestamp', 

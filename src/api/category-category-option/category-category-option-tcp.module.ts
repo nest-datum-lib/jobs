@@ -16,7 +16,7 @@ import { CategoryCategoryOption } from './category-category-option.entity';
 		CategoryCategoryOptionTcpController, 
 	],
 	imports: [
-		TypeOrmModule.forFeature([
+		TypeOrmModule.forFeature([ 
 			CategoryOption,
 			CategoryCategoryOption,
 			Category,

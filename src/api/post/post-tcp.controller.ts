@@ -10,7 +10,6 @@ import {
 	strId as utilsCheckStrId,
 	strName as utilsCheckStrName, 
 	strDescription as utilsCheckStrDescription,
-	strFilled as utilsCheckStrFilled,
 } from '@nest-datum-utils/check';
 import { PostService } from './post.service';
 
@@ -38,17 +37,29 @@ export class PostTcpController extends TcpController {
 	async validateUpdate(options) {
 		const output = {};
 
+		if (utilsCheckExists(options['postStatusId'])) {
+			if (!utilsCheckStrId(options['postStatusId'])) {
+				throw new MethodNotAllowedException(`Property "postStatusId" is not valid.`);
+			}
+			output['postStatusId'] = options['postStatusId'];
+		}
 		if (utilsCheckExists(options['categoryId'])) {
 			if (!utilsCheckStrId(options['categoryId'])) {
 				throw new MethodNotAllowedException(`Property "categoryId" is not valid.`);
 			}
 			output['categoryId'] = options['categoryId'];
 		}
-		if (utilsCheckExists(options['postStatusId'])) {
-			if (!utilsCheckStrId(options['postStatusId'])) {
-				throw new MethodNotAllowedException(`Property "postStatusId" is not valid.`);
+		if (utilsCheckExists(options['parentId'])) {
+			if (!utilsCheckStrId(options['parentId'])) {
+				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
 			}
-			output['postStatusId'] = options['postStatusId'];
+			output['parentId'] = options['parentId'];
+		}
+		if (utilsCheckExists(options['parentId'])) {
+			if (!utilsCheckStrId(options['parentId'])) {
+				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
+			}
+			output['parentId'] = options['parentId'];
 		}
 		if (utilsCheckExists(options['name'])) {
 			if (!utilsCheckStrName(options['name'])) {

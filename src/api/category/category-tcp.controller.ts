@@ -35,23 +35,17 @@ export class CategoryTcpController extends TcpController {
 	async validateUpdate(options) {
 		const output = {};
 
-		if (utilsCheckExists(options['userId'])) {
+		if (utilsCheckStrFilled(options['userId'])) {
 			if (!utilsCheckStrId(options['userId'])) {
 				throw new MethodNotAllowedException(`Property "userId" is not valid.`);
 			}
 			output['userId'] = options['userId'];
 		}
-		if (utilsCheckExists(options['categoryStatusId'])) {
+		if (utilsCheckStrFilled(options['categoryStatusId'])) {
 			if (!utilsCheckStrId(options['categoryStatusId'])) {
 				throw new MethodNotAllowedException(`Property "categoryStatusId" is not valid.`);
 			}
 			output['categoryStatusId'] = options['categoryStatusId'];
-		}
-		if (utilsCheckExists(options['parentId'])) {
-			if (!utilsCheckStrId(options['parentId'])) {
-				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
-			}
-			output['parentId'] = options['parentId'];
 		}
 		if (utilsCheckExists(options['name'])) {
 			if (!utilsCheckStrName(options['name'])) {

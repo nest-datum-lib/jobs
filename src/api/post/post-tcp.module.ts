@@ -11,7 +11,6 @@ import {
 import { PostService } from './post.service';
 import { PostTcpController } from './post-tcp.controller';
 import { Category } from '../category/category.entity';
-import { Tag } from '../tag/tag.entity';
 import { PostPostPostOption } from '../post-post-post-option/post-post-post-option.entity';
 import { PostOption } from '../post-option/post-option.entity';
 import { PostPostOption } from '../post-post-option/post-post-option.entity';
@@ -22,7 +21,6 @@ import { Post } from './post.entity';
 	imports: [
 		TypeOrmModule.forFeature([ 
 			Category,
-			Tag,
 			PostOption,
 			PostPostOption,
 			Post,

@@ -6,6 +6,7 @@ import {
 	Param,
 	MethodNotAllowedException,
 } from '@nestjs/common';
+import { checkToken } from '@nest-datum-common/jwt';
 import { AccessToken } from '@nest-datum-common/decorators';
 import { MainHttpController } from '@nest-datum/main';
 import { 
@@ -45,23 +46,17 @@ export class CategoryHttpController extends MainHttpController {
 	async validateUpdate(options) {
 		const output = {};
 
-		if (utilsCheckExists(options['userId'])) {
-			if (!utilsCheckStrId(options['userId'])) {
-				throw new MethodNotAllowedException(`Property "userId" is not valid.`);
-			}
-			output['userId'] = options['userId'];
-		}
-		if (utilsCheckExists(options['categoryStatusId'])) {
+		if (utilsCheckStrFilled(options['categoryStatusId'])) {
 			if (!utilsCheckStrId(options['categoryStatusId'])) {
 				throw new MethodNotAllowedException(`Property "categoryStatusId" is not valid.`);
 			}
 			output['categoryStatusId'] = options['categoryStatusId'];
 		}
-		if (utilsCheckExists(options['parentId'])) {
-			if (!utilsCheckStrId(options['parentId'])) {
-				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
+		if (utilsCheckStrFilled(options['userId'])) {
+			if (!utilsCheckStrId(options['userId'])) {
+				throw new MethodNotAllowedException(`Property "userId" is not valid.`);
 			}
-			output['parentId'] = options['parentId'];
+			output['userId'] = options['userId'];
 		}
 		if (utilsCheckExists(options['name'])) {
 			if (!utilsCheckStrName(options['name'])) {
@@ -86,7 +81,6 @@ export class CategoryHttpController extends MainHttpController {
 		@AccessToken() accessToken: string,
 		@Body('id') id: string,
 		@Body('userId') userId: string,
-		@Body('parentId') parentId: string,
 		@Body('categoryStatusId') categoryStatusId: string,
 		@Body('name') name: string,
 		@Body('description') description: string,
@@ -96,7 +90,6 @@ export class CategoryHttpController extends MainHttpController {
 			accessToken,
 			id,
 			userId,
-			parentId,
 			categoryStatusId,
 			name,
 			description,
@@ -110,7 +103,6 @@ export class CategoryHttpController extends MainHttpController {
 		@Param('id') id: string,
 		@Body('id') newId: string,
 		@Body('userId') userId: string,
-		@Body('parentId') parentId: string,
 		@Body('categoryStatusId') categoryStatusId: string,
 		@Body('name') name: string,
 		@Body('description') description: string,
@@ -122,7 +114,6 @@ export class CategoryHttpController extends MainHttpController {
 			id,
 			newId,
 			userId,
-			parentId,
 			categoryStatusId,
 			name,
 			description,

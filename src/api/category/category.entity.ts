@@ -5,7 +5,6 @@ import {
 	CreateDateColumn,
 	UpdateDateColumn,
 	Index,
-	ManyToOne,
 	OneToMany,
 } from 'typeorm';
 import {
@@ -23,9 +22,6 @@ export class Category {
 	@Column({ default: '' })
 	@Index()
 	public userId: string;
-
-	@Column({ default: '' })
-	public parentId: string;
 
 	@Column({ default: '' })
 	public categoryStatusId: string;

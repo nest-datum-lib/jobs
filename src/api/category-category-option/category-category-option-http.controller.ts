@@ -6,7 +6,7 @@ import { CategoryCategoryOptionService } from './category-category-option.servic
 export class CategoryCategoryOptionHttpController extends BindHttpController {
 	protected readonly mainRelationColumnName: string = 'categoryId';
 	protected readonly optionRelationColumnName: string = 'categoryOptionId';
-
+	
 	constructor(
 		protected service: CategoryCategoryOptionService,
 	) {

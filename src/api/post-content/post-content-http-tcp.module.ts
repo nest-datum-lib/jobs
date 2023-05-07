@@ -7,18 +7,18 @@ import {
 	TransportModule,
 	TransportService, 
 } from '@nest-datum/transport';
-import { TagStatusHttpTcpController } from './tag-status-http-tcp.controller';
+import { PostContentHttpTcpController } from './post-content-http-tcp.controller';
 
 @Module({
 	imports: [ 
 		TransportModule, 
 	],
-	controllers: [ TagStatusHttpTcpController ],
+	controllers: [ PostContentHttpTcpController ],
 	providers: [ 
 		TransportService, 
 	],
 })
-export class TagStatusHttpTcpModule implements NestModule {
+export class PostContentHttpTcpModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {
 	}
 }

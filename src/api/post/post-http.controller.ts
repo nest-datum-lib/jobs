@@ -6,6 +6,7 @@ import {
 	Param,
 	MethodNotAllowedException,
 } from '@nestjs/common';
+import { checkToken } from '@nest-datum-common/jwt';
 import { AccessToken } from '@nest-datum-common/decorators';
 import { MainHttpController } from '@nest-datum/main';
 import { 
@@ -13,7 +14,6 @@ import {
 	strId as utilsCheckStrId,
 	strName as utilsCheckStrName, 
 	strDescription as utilsCheckStrDescription,
-	strFilled as utilsCheckStrFilled,
 } from '@nest-datum-utils/check';
 import { PostPostOptionService } from '../post-post-option/post-post-option.service';
 import { PostPostPostOptionService } from '../post-post-post-option/post-post-post-option.service';
@@ -48,17 +48,29 @@ export class PostHttpController extends MainHttpController {
 	async validateUpdate(options) {
 		const output = {};
 
+		if (utilsCheckExists(options['postStatusId'])) {
+			if (!utilsCheckStrId(options['postStatusId'])) {
+				throw new MethodNotAllowedException(`Property "postStatusId" is not valid.`);
+			}
+			output['postStatusId'] = options['postStatusId'];
+		}
 		if (utilsCheckExists(options['categoryId'])) {
 			if (!utilsCheckStrId(options['categoryId'])) {
 				throw new MethodNotAllowedException(`Property "categoryId" is not valid.`);
 			}
 			output['categoryId'] = options['categoryId'];
 		}
-		if (utilsCheckExists(options['postStatusId'])) {
-			if (!utilsCheckStrId(options['postStatusId'])) {
-				throw new MethodNotAllowedException(`Property "postStatusId" is not valid.`);
+		if (utilsCheckExists(options['parentId'])) {
+			if (!utilsCheckStrId(options['parentId'])) {
+				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
 			}
-			output['postStatusId'] = options['postStatusId'];
+			output['parentId'] = options['parentId'];
+		}
+		if (utilsCheckExists(options['parentId'])) {
+			if (!utilsCheckStrId(options['parentId'])) {
+				throw new MethodNotAllowedException(`Property "parentId" is not valid.`);
+			}
+			output['parentId'] = options['parentId'];
 		}
 		if (utilsCheckExists(options['name'])) {
 			if (!utilsCheckStrName(options['name'])) {
@@ -84,6 +96,7 @@ export class PostHttpController extends MainHttpController {
 		@Body('id') id: string,
 		@Body('userId') userId: string,
 		@Body('categoryId') categoryId: string,
+		@Body('parentId') parentId: string,
 		@Body('postStatusId') postStatusId: string,
 		@Body('name') name: string,
 		@Body('description') description: string,
@@ -93,6 +106,7 @@ export class PostHttpController extends MainHttpController {
 			accessToken,
 			id,
 			userId,
+			parentId,
 			categoryId,
 			postStatusId,
 			name,
@@ -108,6 +122,7 @@ export class PostHttpController extends MainHttpController {
 		@Body('id') newId: string,
 		@Body('userId') userId: string,
 		@Body('categoryId') categoryId: string,
+		@Body('parentId') parentId: string,
 		@Body('postStatusId') postStatusId: string,
 		@Body('name') name: string,
 		@Body('description') description: string,
@@ -120,6 +135,7 @@ export class PostHttpController extends MainHttpController {
 			newId,
 			userId,
 			categoryId,
+			parentId,
 			postStatusId,
 			name,
 			description,

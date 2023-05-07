@@ -10,7 +10,7 @@ import { PostPostOptionService } from './post-post-option.service';
 export class PostPostOptionTcpController extends BindTcpController {
 	protected readonly mainRelationColumnName: string = 'postId';
 	protected readonly optionRelationColumnName: string = 'postOptionId';
-
+	
 	constructor(
 		protected service: PostPostOptionService,
 	) {

@@ -13,15 +13,13 @@ import {
 } from 'class-validator';
 import { PostPostPostOption } from '../post-post-post-option/post-post-post-option.entity';
 import { PostPostOption } from '../post-post-option/post-post-option.entity';
+import { PostContent } from '../post-content/post-content.entity';
 import { Category } from '../category/category.entity';
 
 @Entity()
 export class Post {
 	@PrimaryGeneratedColumn('uuid')
 	public id: string;
-
-	@Column({ default: '' })
-	public envKey: string;
 
 	@Column({ default: '' })
 	@Index()
@@ -35,6 +33,9 @@ export class Post {
 		onUpdate: 'CASCADE',
 	})
 	public category: Category;
+
+	@Column({ default: '' })
+	public parentId: string;
 
 	@Column({ default: '' })
 	public postStatusId: string;
@@ -77,4 +78,9 @@ export class Post {
 		cascade: true,
 	})
 	public postPostPostOptions: PostPostPostOption[];
+
+	@OneToMany(() => PostContent, (postContent) => postContent.post, {
+		cascade: true,
+	})
+	public postContents: PostContent[];
 }

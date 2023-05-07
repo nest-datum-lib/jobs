@@ -10,7 +10,7 @@ import { PostPostOption } from '../post-post-option/post-post-option.entity';
 import { Post } from './post.entity';
 
 @Injectable()
-export class PostService extends MainService {
+export class postService extends MainService {
 	protected readonly withEnvKey: boolean = false;
 	protected readonly withTwoStepRemoval: boolean = true;
 	protected readonly repositoryConstructor = Post;
@@ -31,7 +31,8 @@ export class PostService extends MainService {
 		return ({
 			...super.manyGetColumns(customColumns),
 			userId: true,
-			categoryId: true,
+			typeId: true,
+			parentId: true,
 			postStatusId: true,
 			name: true,
 			description: true,
@@ -42,7 +43,8 @@ export class PostService extends MainService {
 		return ({
 			...super.oneGetColumns(customColumns),
 			userId: true,
-			categoryId: true,
+			typeId: true,
+			parentId: true,
 			postStatusId: true,
 			name: true,
 			description: true,

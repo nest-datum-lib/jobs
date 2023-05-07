@@ -29,6 +29,11 @@ import {
 	RoleAccessTcpModule, 
 } from './api/role-access';
 import { 
+	PostContentHttpModule,
+	PostContentHttpTcpModule, 
+	PostContentTcpModule, 
+} from './api/post-content';
+import { 
 	PostPostOptionHttpModule,
 	PostPostOptionHttpTcpModule, 
 	PostPostOptionTcpModule, 
@@ -67,22 +72,7 @@ import {
 	CategoryHttpModule,
 	CategoryHttpTcpModule,
 	CategoryTcpModule, 
-} from './api/category';
-import { 
-	TagOptionHttpModule,
-	TagOptionHttpTcpModule,
-	TagOptionTcpModule, 
-} from './api/tag-option';
-import { 
-	TagStatusHttpModule,
-	TagStatusHttpTcpModule,
-	TagStatusTcpModule, 
-} from './api/tag-status';
-import { 
-	TagHttpModule,
-	TagHttpTcpModule,
-	TagTcpModule, 
-} from './api/tag';
+} from './api/Category';
 
 const Http = {
 	AccessAccessOptionHttpModule,
@@ -91,6 +81,7 @@ const Http = {
 	AccessHttpModule,
 	RoleAccessHttpModule,
 	SettingHttpModule,
+	PostContentHttpModule,
 	PostPostOptionHttpModule,
 	PostOptionHttpModule,
 	PostStatusHttpModule,
@@ -99,9 +90,6 @@ const Http = {
 	CategoryOptionHttpModule,
 	CategoryStatusHttpModule,
 	CategoryHttpModule,
-	TagOptionHttpModule,
-	TagStatusHttpModule,
-	TagHttpModule,
 };
 const HttpTcp = {
 	AccessAccessOptionHttpTcpModule,
@@ -110,6 +98,7 @@ const HttpTcp = {
 	AccessHttpTcpModule,
 	RoleAccessHttpTcpModule,
 	SettingHttpTcpModule,
+	PostContentHttpTcpModule,
 	PostPostOptionHttpTcpModule,
 	PostOptionHttpTcpModule,
 	PostStatusHttpTcpModule,
@@ -118,9 +107,6 @@ const HttpTcp = {
 	CategoryOptionHttpTcpModule,
 	CategoryStatusHttpTcpModule,
 	CategoryHttpTcpModule,
-	TagOptionHttpTcpModule,
-	TagStatusHttpTcpModule,
-	TagHttpTcpModule,
 };
 const Tcp = {
 	AccessAccessOptionTcpModule,
@@ -129,6 +115,7 @@ const Tcp = {
 	AccessTcpModule,
 	RoleAccessTcpModule,
 	SettingTcpModule,
+	PostContentTcpModule,
 	PostPostOptionTcpModule,
 	PostOptionTcpModule,
 	PostStatusTcpModule,
@@ -137,9 +124,6 @@ const Tcp = {
 	CategoryOptionTcpModule,
 	CategoryStatusTcpModule,
 	CategoryTcpModule,
-	TagOptionTcpModule,
-	TagStatusTcpModule,
-	TagTcpModule,
 };
 
 export {
@@ -164,6 +148,9 @@ export {
 	SettingHttpModule,
 	SettingHttpTcpModule,
 	SettingTcpModule,
+	PostContentHttpModule,
+	PostContentHttpTcpModule,
+	PostContentTcpModule,
 	PostPostOptionTcpModule,
 	PostOptionTcpModule,
 	PostStatusTcpModule,
@@ -176,25 +163,16 @@ export {
 	PostOptionHttpModule,
 	PostStatusHttpModule,
 	PostHttpModule,
-	CategoryCategoryOptionHttpModule,
-	CategoryOptionHttpModule,
-	CategoryStatusHttpModule,
-	CategoryHttpModule,
-	CategoryCategoryOptionHttpTcpModule,
-	CategoryOptionHttpTcpModule,
-	CategoryStatusHttpTcpModule,
-	CategoryHttpTcpModule,
 	CategoryCategoryOptionTcpModule,
 	CategoryOptionTcpModule,
 	CategoryStatusTcpModule,
 	CategoryTcpModule,
-	TagOptionHttpModule,
-	TagStatusHttpModule,
-	TagHttpModule,
-	TagOptionHttpTcpModule,
-	TagStatusHttpTcpModule,
-	TagHttpTcpModule,
-	TagOptionTcpModule,
-	TagStatusTcpModule,
-	TagTcpModule,
+	CategoryCategoryOptionHttpTcpModule,
+	CategoryOptionHttpTcpModule,
+	CategoryStatusHttpTcpModule,
+	CategoryHttpTcpModule,
+	CategoryCategoryOptionHttpModule,
+	CategoryOptionHttpModule,
+	CategoryStatusHttpModule,
+	CategoryHttpModule,
 };
