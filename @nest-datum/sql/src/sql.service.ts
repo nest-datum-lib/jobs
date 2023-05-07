@@ -248,8 +248,6 @@ export class SqlService extends ModelService {
 	}
 
 	protected async manyProcess(processedPayload: object, payload: object): Promise<Array<Array<any> | number>> {
-		console.log('>>>>>>>>>>>>>>>>>>>>>>>', processedPayload, payload, await this.repository.find());
-
 		if (this.withCache === true) {
 			const cachedData = await this.repositoryCache.one({ key: [ this.prefix(), 'many', processedPayload ] });
 
@@ -258,9 +256,6 @@ export class SqlService extends ModelService {
 			}
 		}
 		const condition = await this.findMany(processedPayload);
-
-		console.log('condition', condition);
-
 		const output = await this.repository.findAndCount(condition);
 
 		if (this.withCache === true) {
