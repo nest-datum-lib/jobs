@@ -41,16 +41,13 @@ export class Post {
 	@Index({ unique: true })
 	public name: string;
 
-	@Column()
-	@Index({ default: '' })
+	@Column({ default: '' })
 	public companyId: string;
 
-	@Column()
-	@Index({ default: '' })
+	@Column({ default: '' })
 	public locationId: string;
 
-	@Column()
-	@Index({ default: 0 })
+	@Column({ default: 0 })
 	public salary: number;
 
 	@Column({ default: '' })
