@@ -51,7 +51,7 @@ export class Post {
 	public postStatusId: string;
 
 	@Column()
-	@Index({ unique: true })
+	@Index()
 	public name: string;
 
 	@Column({ default: '' })
